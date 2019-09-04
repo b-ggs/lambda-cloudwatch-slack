@@ -239,6 +239,7 @@ var handleCloudWatch = function(event, context) {
   var alarmDescription = message.AlarmDescription;
   var alarmReason = message.NewStateReason;
   var trigger = message.Trigger;
+  var namespace = message.Namespace;
   var color = "warning";
 
   if (message.NewStateValue === "ALARM") {
@@ -254,7 +255,8 @@ var handleCloudWatch = function(event, context) {
         "color": color,
         "fields": [
           { "title": "Alarm Name", "value": alarmName, "short": true },
-          { "title": "Alarm Description", "value": alarmDescription, "short": false},
+          { "title": "Namespace", "value": namespace, "short": true },
+          { "title": "Alarm Description", "value": alarmDescription, "short": false },
           {
             "title": "Trigger",
             "value": trigger.Statistic + " "
