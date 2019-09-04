@@ -239,7 +239,7 @@ var handleCloudWatch = function(event, context) {
   var alarmDescription = message.AlarmDescription;
   var alarmReason = message.NewStateReason;
   var trigger = message.Trigger;
-  var namespace = message.Namespace;
+  var namespace = trigger.Namespace;
   var color = "warning";
 
   if (message.NewStateValue === "ALARM") {
